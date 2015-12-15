@@ -27,11 +27,13 @@ panelCtrl.controller('PanelCtrl', function($scope, $rootScope, $location, $http,
             //we post to the api
             $http.post('/api/locations', {
                 message: $scope.message,
+                city: $scope.city,
                 longitude: GoogleMapService.getLocation().longitude,
                 latitude: GoogleMapService.getLocation().latitude
             }).success(function(response) {
                 $scope.message = "";
-                $scope.successMessage = "You mapped it!";
+                $scope.city = "";
+                $scope.successMessage = "Submission successful";
                 $scope.showSuccessMessage = true;
                 GoogleMapService.refreshLocations();
             });

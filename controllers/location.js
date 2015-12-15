@@ -15,9 +15,11 @@ exports.postLocations = function(req, res) {
     console.log(req.body.message);
     console.log(req.body.latitude);
     console.log(req.body.longitude);
+    console.log(req.body.city);
  
     location.latitude = req.body.latitude;
     location.longitude = req.body.longitude;
+    location.city = req.body.city;
     location.message = req.body.message;
  
     //passport will automatically set the user in req.user
@@ -115,6 +117,25 @@ exports.getLocation = function(req, res) {
         res.json(location);
     });
 };
+
+// **********************************
+// GET a location as a user
+// **********************************
+// Create endpoint /api/locations/:location_id for GET
+exports.findLocation = function(req, res) {
+    // Use the Location model to find a specific location
+    Location.find({
+        _id: req.params.location_id
+    }, function(err, location) {
+        if (err)
+            res.send(err);
+        console.log("get locations error " + err);
+        //console.log("location:"+location);
+        location = location[0];
+        var contents = "<div class='row'><h3>" + location.message +"</h3></div>"
+        res.send(contents);
+    });
+};
  
 // **********************************
 // UPDATE a Location
@@ -126,7 +147,8 @@ exports.putLocation = function(req, res) {
         userId: req.user._id,
         _id: req.params.location_id
     }, {
-        message: req.body.message
+        message: req.body.message,
+        city: req.body.city
     }, function(err, num, raw) {
         if (err)
             res.send(err);

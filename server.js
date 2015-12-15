@@ -48,6 +48,10 @@ router.route('/locations/:location_id')
   .put(authController.isAuthenticated, locationController.putLocation)
   .delete(authController.isAuthenticated, locationController.deleteLocation);
 
+//Create endpoint handlers for /findlocation
+router.route('/findlocation/:location_id')
+  .get(locationController.findLocation);
+
 //Create endpoint handlers for /users
 router.route('/users')
   .post(userController.postUsers)

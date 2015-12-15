@@ -6,6 +6,7 @@ var app = angular.module('myApp', [
     'myApp.panelCtrl',
     'myApp.loginCtrl',
     'myApp.signUpCtrl',
+    'myApp.searchCtrl',
     'myApp.googleMapService'
 ])
     .run(function($http, $rootScope, $location, $cookieStore, AuthenticationService) {

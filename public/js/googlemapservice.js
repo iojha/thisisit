@@ -49,6 +49,25 @@ angular.module('myApp.googleMapService', [])
         };
 
         /***************************
+         * Returns results by city name -- NEEDS WORK
+         **************************/
+        googleMapService.getLocationByCity = function(address) {
+        //    var address = document.getElementById("search").value;
+                geocoder.geocode( { 'address': address}, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                map.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+                });
+              } else {
+                alert("Geocode was not successful for the following reason: " + status);
+            }
+          });
+        };
+          
+
+        /***************************
          * Returns true if marker was placed on the map
          **************************/
         googleMapService.isMarkerSet = function() {
@@ -74,9 +93,10 @@ angular.module('myApp.googleMapService', [])
         /***************************
          * The Location object
          **************************/
-        function Location(latlon, message, username, id) {
+        function Location(latlon, message, city, username, id) {
             this.latlon = latlon;
             this.message = message;
+            this.city = city;
             this.username = username;
             this.id = id;
         }
@@ -95,10 +115,15 @@ angular.module('myApp.googleMapService', [])
                 var r = response[i];
 
                 //The message we'll put in the infowindow
+                console.log(r)
                 var contentString = '<div class="info-box"><h5>' +
                     r.username +
-                    ' said:</h5><p>' +
-                    r.message +
+                    ' Positions:</h5><p>' +
+                    "<a href='/api/findlocation/" + r._id + "'>" +
+                    r.message +"</a>"+
+                    "<br/>"  +
+                    'City:' +
+                    r.city +
                     '</p><br/></div>';
 
                 //add to the locations
@@ -158,6 +183,29 @@ angular.module('myApp.googleMapService', [])
          **************************/
         function initialize() {
 
+            // Create an array of styles.
+            var styles = [
+                {
+                  stylers: [
+                    { hue: "#00ffe6" },
+                    { saturation: -20 }
+                  ]
+                },{
+                  featureType: "road",
+                  elementType: "geometry",
+                  stylers: [
+                    { lightness: 100 },
+                    { visibility: "simplified" }
+                  ]
+                },{
+                  featureType: "road",
+                  elementType: "labels",
+                  stylers: [
+                    { visibility: "off" }
+                  ]
+                }
+              ];
+
             //We create a cache
             if (!arguments.callee.cache) arguments.callee.cache = {};
             var cache = arguments.callee.cache;
@@ -174,24 +222,42 @@ angular.module('myApp.googleMapService', [])
                 //We now have ran it 
                 cache.firstInit = true;
 
-                var mapOptions = {},
+
+                var mapOptions = {
+                        mapTypeControlOptions: {
+                        mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+                    }
+                },
                     bounds,
                     fitBounds = false;
+
 
                 //If we have markers to show
                 if (locations.length !== 0) {
                     bounds = getBounds(locations);
                     fitBounds = true;
                 }
-                //Else we center on Montreal
+                //Else we center on Boulder
                 else {
-                    mapOptions.center = new google.maps.LatLng(45.5, -73.5667);
+                    mapOptions.center = new google.maps.LatLng(40, -109.5667);
                     mapOptions.zoom = 2;
                 }
+//START
+
+                // This creats a new StyledMapType object, passing it the array of styles,
+                // as well as the name to be displayed on the map type control.
+                var styledMap = new google.maps.StyledMapType(styles,
+                {name: "Volunteer Ops"});
+
 
                 //the new map
                 cache.map = new google.maps.Map(document.getElementById('map-canvas'),
                     mapOptions);
+
+
+                  //Associate the styled map with the MapTypeId and set it to display.
+                  cache.map.mapTypes.set('map_style', styledMap);
+                  cache.map.setMapTypeId('map_style');
 
                 //We set the map to fit the bounds if
                 //there are markers
@@ -265,6 +331,5 @@ angular.module('myApp.googleMapService', [])
         //we show the map for the first time on page load
         google.maps.event.addDomListener(window, 'load',
             googleMapService.refreshLocations);
-        console.log(googleMapService)
         return googleMapService;
     });

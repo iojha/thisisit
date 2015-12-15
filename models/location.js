@@ -6,6 +6,7 @@ var LocationSchema = new mongoose.Schema({
   longitude: Number,
   latitude: Number,
   message: String,
+  city: String,
   userId: String
 });
 

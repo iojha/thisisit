@@ -15,9 +15,14 @@ routing.config(['$routeProvider',
             }).
             //control panel
         when('/panel', {
-            templateUrl: 'partials/panel.html',
-            controller: 'PanelCtrl'
-        }).
+                templateUrl: 'partials/panel.html',
+                controller: 'PanelCtrl'
+            }).
+            //search panel
+        when('/search', {
+            templateUrl: 'partials/search.html',
+            controller: 'SearchCtrl'
+            }).
         otherwise({
             redirectTo: '/login'
         });
