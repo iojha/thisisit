@@ -5,8 +5,12 @@ var mongoose = require('mongoose');
 var LocationSchema = new mongoose.Schema({
   longitude: Number,
   latitude: Number,
+  name: String,
   message: String,
-  city: String,
+  loc: String,
+  contact: String,
+  website: String,
+  description: String,
   userId: String
 });
 

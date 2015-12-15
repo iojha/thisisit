@@ -19,8 +19,12 @@ exports.postLocations = function(req, res) {
  
     location.latitude = req.body.latitude;
     location.longitude = req.body.longitude;
-    location.city = req.body.city;
+    location.name = req.body.name;
+    location.loc = req.body.loc;
     location.message = req.body.message;
+    location.contact = req.body.contact;
+    location.website = req.body.website;
+    location.description = req.body.description;
  
     //passport will automatically set the user in req.user
     location.userId = req.user._id;
@@ -132,7 +136,12 @@ exports.findLocation = function(req, res) {
         console.log("get locations error " + err);
         //console.log("location:"+location);
         location = location[0];
-        var contents = "<div class='row'><h3>" + location.message +"</h3></div>"
+        var contents ="<div class='row container' style='padding: 20px 20px'><h3 style='padding-bottom: 0 !important;'>" + location.name + "</h3>" + 
+        location.website + "<br />" +
+        "<h3>" + "Open Volunteer Position:</h3>" + "<p>" + location.message + "</p>" +
+        "<h3>Position Description</h3><p>" + location.description + "</p>" + "<br /><br/>" + "<a href='mailto:"+ location.contact+"'>" + "<button class='btn btn-info'>Contact</button></a><br/>" +
+        "<a href='#' style='font-size: 11px;'>Back to Map" + "</a>" +
+        "</div>"
         res.send(contents);
     });
 };

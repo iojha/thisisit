@@ -26,13 +26,22 @@ panelCtrl.controller('PanelCtrl', function($scope, $rootScope, $location, $http,
 
             //we post to the api
             $http.post('/api/locations', {
+                name: $scope.name,
                 message: $scope.message,
-                city: $scope.city,
+                city: $scope.loc,
+                contact: $scope.contact,
+                description: $scope.description,
+                website: $scope.website,
                 longitude: GoogleMapService.getLocation().longitude,
                 latitude: GoogleMapService.getLocation().latitude
             }).success(function(response) {
+                $scope.name = "";
                 $scope.message = "";
                 $scope.city = "";
+                city="";
+                contact="";
+                description: "";
+                website: "";
                 $scope.successMessage = "Submission successful";
                 $scope.showSuccessMessage = true;
                 GoogleMapService.refreshLocations();
@@ -40,7 +49,7 @@ panelCtrl.controller('PanelCtrl', function($scope, $rootScope, $location, $http,
         }
     };
 
-    //scope function to delete a marker
+    //scope function to delete a mark
     $scope.deleteMessage = function() {
 
         //we get the location object
@@ -58,7 +67,6 @@ panelCtrl.controller('PanelCtrl', function($scope, $rootScope, $location, $http,
     $rootScope.$on('allow', function() {
         $scope.$apply(function(){
            $scope.showDeleteButton = true;
- 
         });
     });
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Volunteer Now</title>
+ 
+        <!-- Bootstrap CSS -->
+        <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+ 
+        <!-- Our own CSS we will soon create -->
+        <link href="./css/style.css" type="text/css" rel="stylesheet">
+ 
+        <!-- Don't forget to input your API key here -->
+        <script type="text/javascript"
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrn605l7RPadiwdzsOlRw9O28lxfYBJ6s"></script>
+    </head>
+ 
+    <!-- We bind our app to the body tag -->
+    <body>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar top-bar"></span>
+                      <span class="icon-bar middle-bar"></span>
+                      <span class="icon-bar bottom-bar"></span>
+                </button>
+            </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="left-panel" class="col-md-4">
+                    <div class="landing-text"><img id="logo" src="img/logo.svg" width="150px"></div>
+                </div>
+                <div  id="right-panel" class="col-md-8">
+                    <div class="landing-text col-md-9">
+                        <h1>Post & find volunteer <br/>positions near you</h1>
+                        <p>The perfect way to post & find volunteer positions near you. The perfect way to post & find volunteer positions near you. The perfect way to post & find volunteer positions near you.</p>
+                    <a href="index.html#/sign-up"><button class="btn btn-primary">Sign Up</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+ 
+        <!-- jQuery -->
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/routing.js"></script>
+        <script src="js/authenticationservice.js"></script>
+        <script src="js/googlemapservice.js"></script>
+        <script src="js/loginCtrl.js"></script>
+        <script src="js/panelCtrl.js"></script>
+        <script src="js/signUpCtrl.js"></script>
+    </body>
+</html>

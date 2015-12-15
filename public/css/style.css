@@ -1,3 +1,101 @@
+/*MAP*/
+
+/*LANDING PAGE STYLES*/
+#left-panel {
+    background-image:url('../img/bg3.gif');
+    background-size:cover; 
+    padding: 20px;
+    height: 650px;
+    margin-top: -50px;
+}
+
+#right-panel {
+    background: #fff;
+    height: 600px;
+}
+
+.landing-text {
+    padding-top: 15%;
+    margin-left: 10%;
+}
+
+/*NAVBAR*/
+
+.navbar {
+    margin-bottom: 0;
+    background: transparent;
+    border: none;
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #000;
+}
+
+/*Button nav for all screen sizes*/
+    .navbar-header {
+        float: none;
+    }
+    .navbar-toggle {
+        display: block;
+        border: none;
+        color: #000;
+    }
+    .navbar-collapse.collapse {
+        display: none !important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin: 7.5px -15px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+.nav .navbar-nav{
+    width: 50%;
+}
+
+.navbar-toggle {
+  border: none;
+  background: transparent !important;
+
+  &:hover {
+    background: transparent !important;
+  }
+
+  .icon-bar {
+    width: 22px;
+    transition: all 0.2s;
+  }
+  .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+  }
+  .middle-bar {
+    opacity: 0;
+  }
+  .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+  }
+}
+
+
+
+/*GLOBAL STYLES*/
+h1 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: lighter;
+    font-size: 3em;
+}
+
+
+/*DYNAMIC PAGE STYLES*/
 #inputMessage {
     width: 100%;
 }
@@ -29,7 +127,7 @@
     margin-top: 20px;
     margin-bottom: 40px;
     font-weight: lighter;
-    font-size: 4.6em;
+    font-size: 3em;
 }
  
 .info-box {
@@ -37,12 +135,13 @@
 }
  
 #map-canvas {
-    height: 600px;
+    height: 500px;
     
 }
  
 .control-panel {
-    height: 600px;
+    height: auto;
+    width: 100%;
     background: #48c8ca; 
     background: -webkit-linear-gradient(#71fbc9, #48c8ca); /* For Safari 5.1 to 6.0 */
     background: -o-linear-gradient(#71fbc9, #48c8ca); /* For Opera 11.1 to 12.0 */
@@ -50,3 +149,19 @@
     background: linear-gradient(#71fbc9, #48c8ca); /* Standard syntax */
     padding: 20px;*/
 }
+
+.btn-primary {
+    background: #48c8ca; 
+
+}
+
+#logo {
+    margin-top: 135px;
+    margin-left: 50px;
+}
+
+/*
+    background: -webkit-linear-gradient(#48c8ca,#71fbc9); /* For Safari 5.1 to 6.0 */
+/*    background: -o-linear-gradient(#48c8ca,#71fbc9); /* For Opera 11.1 to 12.0 */
+/*    background: -moz-linear-gradient(#48c8ca,#71fbc9); /* For Firefox 3.6 to 15 */
+/*    background: linear-gradient(#48c8ca,#71fbc9); /* Standard syntax */

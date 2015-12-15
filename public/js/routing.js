@@ -3,15 +3,15 @@ var routing = angular.module('myApp.routing', []);
 routing.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
-            //login panel
-        when('/login', {
-                templateUrl: 'partials/login.html',
-                controller: 'LoginCtrl'
-            }).
             //sign-up panel
         when('/sign-up', {
                 templateUrl: 'partials/sign-up.html',
                 controller: 'SignUpCtrl'
+            }).
+            //login panel
+        when('/login', {
+                templateUrl: 'partials/login.html',
+                controller: 'LoginCtrl'
             }).
             //control panel
         when('/panel', {
@@ -24,7 +24,7 @@ routing.config(['$routeProvider',
             controller: 'SearchCtrl'
             }).
         otherwise({
-            redirectTo: '/login'
+            redirectTo: '/sign-up'
         });
     }
 ]);

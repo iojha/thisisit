@@ -93,10 +93,14 @@ angular.module('myApp.googleMapService', [])
         /***************************
          * The Location object
          **************************/
-        function Location(latlon, message, city, username, id) {
+        function Location(latlon,message, contact, loc, description ,username, id) {
             this.latlon = latlon;
-            this.message = message;
-            this.city = city;
+            this.message = message; //position title
+            this.loc = loc; //location
+            console.log(loc);
+            this.contact = contact; //email
+            console.log(contact);
+            this.description = description; //volunteer position description
             this.username = username;
             this.id = id;
         }
@@ -116,14 +120,14 @@ angular.module('myApp.googleMapService', [])
 
                 //The message we'll put in the infowindow
                 console.log(r)
-                var contentString = '<div class="info-box"><h5>' +
-                    r.username +
-                    ' Positions:</h5><p>' +
-                    "<a href='/api/findlocation/" + r._id + "'>" +
-                    r.message +"</a>"+
-                    "<br/>"  +
-                    'City:' +
-                    r.city +
+                var contentString = '<div class="info-box"><h5 style="padding-bottom: 0px !important; margin-bottom: 0 !important;">' +
+                    r.name + '</h5>' +
+                    '<span style="color: #000;">' + 
+                    "<a href='" + r.website + "' target='_blank'>" + r.website + '</a><br />' +
+                    // r.loc + '</span></em><br/><br/>' +
+                    'Position:</h5> ' +
+                    "<a href='/api/findlocation/" + r._id + "'>" + r.message +"</a><br/>"+
+                    // "<a href='/api/findlocation/" + r._id + "'>" + "<button class='btn btn-info'>Learn More</button>"
                     '</p><br/></div>';
 
                 //add to the locations
@@ -239,7 +243,7 @@ angular.module('myApp.googleMapService', [])
                 }
                 //Else we center on Boulder
                 else {
-                    mapOptions.center = new google.maps.LatLng(40, -109.5667);
+                    mapOptions.center = new google.maps.LatLng(40.0274, -105.2519);
                     mapOptions.zoom = 2;
                 }
 //START
