@@ -136,12 +136,13 @@ exports.findLocation = function(req, res) {
         console.log("get locations error " + err);
         //console.log("location:"+location);
         location = location[0];
-        var contents ="<div class='row container' style='padding: 20px 20px'><h3 style='padding-bottom: 0 !important;'>" + location.name + "</h3>" + 
+        var contents = "<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.js'></script>" + "<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' integrity='sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7' crossorigin='anonymous'></link>" + "<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js' integrity='sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS' crossorigin='anonymous'></script>" + 
+        "<div class='row container' style='padding: 20px 20px'><h1 style='font-family: Roboto'; padding-bottom: 0 !important;'>" + location.name + "</h3>" + 
         location.website + "<br />" +
-        "<h3>" + "Open Volunteer Position:</h3>" + "<p>" + location.message + "</p>" +
+        "<h3>"+ "Open Volunteer Position:</h1>" + "<p>" + location.message + "</p>" +
         "<h3>Position Description</h3><p>" + location.description + "</p>" + "<br /><br/>" + "<a href='mailto:"+ location.contact+"'>" + "<button class='btn btn-info'>Contact</button></a><br/>" +
-        "<a href='#' style='font-size: 11px;'>Back to Map" + "</a>" +
-        "</div>"
+        "<a href='/#/sign-up' style='font-size: 11px;'>Back to Map" + "</a>" +
+        "</div>";
         res.send(contents);
     });
 };
